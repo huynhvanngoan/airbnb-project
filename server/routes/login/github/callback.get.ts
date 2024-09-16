@@ -50,7 +50,7 @@ export default defineEventHandler(async (event) => {
                 id: userId,
                 github_id: githubUser.id,
                 name: githubUser.name,
-                email: githubUser.login,
+                email: githubUser.login
             },
         });
 
