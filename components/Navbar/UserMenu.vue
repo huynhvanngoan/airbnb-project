@@ -55,7 +55,12 @@
                         </DropdownMenuItem>
                     </template>
                     <template v-else>
-                        <DropdownMenuItem>Login</DropdownMenuItem>
+                        <DropdownMenuItem @click="onOpen">
+                            <span>Register</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem @click="loginModal">
+                            <span>Login</span>
+                        </DropdownMenuItem>
                     </template>
                 </DropdownMenuContent>
             </DropdownMenu>
@@ -64,6 +69,8 @@
 </template>
 
 <script setup lang="ts">
+const { onOpen } = useRegister();
+const { onOpen: loginModal } = useLogin();
 const user = useUser();
 async function logout() {
     await $fetch("/api/logout", {
@@ -73,5 +80,3 @@ async function logout() {
     await navigateTo("/login");
 }
 </script>
-
-<style scoped lang="scss"></style>
